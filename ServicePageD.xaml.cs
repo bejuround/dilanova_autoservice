@@ -96,5 +96,24 @@ namespace dilanova_autoservice
         {
             UpdateServices();
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Class1.MainFrame.Navigate(new AddEditPage(null));
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Class1.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Service));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                Dilanova_AutoservesEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ServiceListView.ItemsSource = Dilanova_AutoservesEntities.GetContext().Service.ToList();
+            }
+        }
     }
 }
