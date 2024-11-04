@@ -10,5 +10,6 @@ namespace dilanova_autoservice
     internal class Class1
     {
         public static Frame MainFrame { get; set; }
+
     }
 }
