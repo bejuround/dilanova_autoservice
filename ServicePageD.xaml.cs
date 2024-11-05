@@ -131,6 +131,7 @@ namespace dilanova_autoservice
             {
                 Dilanova_AutoservesEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 ServiceListView.ItemsSource = Dilanova_AutoservesEntities.GetContext().Service.ToList();
+                UpdateServices();
             }
         }
 
